@@ -585,7 +585,7 @@ public final class TerminalEmulator {
         if (mEscapeState == ESC_APC) {
             doApc(b);
             return;
-        } else if (mEscapeState == ESC_APC_ESC) {
+        } else if (mEscapeState == ESC_APC_ESCAPE) {
             doApcEsc(b);
             return;
         }
@@ -869,7 +869,7 @@ public final class TerminalEmulator {
                     case ESC_APC:
                         doApc(b);
                         break;
-                    case ESC_APC_ESC:
+                    case ESC_APC_ESCAPE:
                         doApcEsc(b);
                         break;
                     case ESC_OSC:
@@ -2097,7 +2097,7 @@ public final class TerminalEmulator {
             case 7: // Bell.
                 break;
             case 27: // Escape.
-                continueSequence(ESC_APC_ESC);
+                continueSequence(ESC_APC_ESCAPE);
                 break;
             default:
                 collectOSCArgs(b);
